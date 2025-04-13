@@ -12,7 +12,7 @@ def analiza_wykresy(df, folder='wyniki/wykresy'):
     os.makedirs(folder, exist_ok=True)
 
 
-    kolumny = ['Liczba klas równoważności','Entropia Shannona','Płeć','Kierunek']
+    kolumny = ['Liczba klas równoważności','Entropia Shannona','Płeć']
 
     for kolumna in kolumny:
         print (f"{kolumna}")
