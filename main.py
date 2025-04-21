@@ -26,6 +26,7 @@ def main():
         liczba_polaczen = int(input("Podaj liczbę połączeń: "))
         plec = input("Podaj płeć (k/m): ")
         kierunek = input("Podaj kierunek (h/s): ")
+        nr_ankiety = input("Podaj numer ankiety: ")
 
         krawedzie = []
         for i in range(liczba_polaczen):
@@ -54,7 +55,8 @@ def main():
             'Liczba klas równoważności': [len(klasy)],
             'Entropia Shannona': [entropia_shannona],
             'Płeć': [plec],
-            'Kierunek': [kierunek]
+            'Kierunek': [kierunek],
+            'nr.ankiety' : [nr_ankiety]
         })
 
         df = pd.concat([df, new_row], ignore_index=True)

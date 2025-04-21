@@ -12,7 +12,7 @@ def analiza_wykresy(df, folder='wyniki/wykresy'):
     os.makedirs(folder, exist_ok=True)
 
 
-    kolumny = ['Liczba klas równoważności','Entropia Shannona','Płeć']
+    kolumny = ['Liczba klas równoważności','Entropia Shannona','Płeć','Kierunek' ]
 
     for kolumna in kolumny:
         print (f"{kolumna}")
@@ -21,7 +21,7 @@ def analiza_wykresy(df, folder='wyniki/wykresy'):
 
     # histogram liczby klas równoważności
     plt.figure(figsize=(8, 5))
-    sns.countplot(data=df, x='Liczba klas równoważności')
+    sns.countplot(data=df, x='Liczba klas równoważności', hue='Kierunek',palette='Set2')
     plt.title('Rozkład liczby klas równoważności')
     plt.xlabel('Liczba klas')
     plt.ylabel('Liczba przypadków')
@@ -31,20 +31,29 @@ def analiza_wykresy(df, folder='wyniki/wykresy'):
 
     # rozklad entropii Shannona
     plt.figure(figsize=(8, 5))
-    sns.histplot(data=df, x='Entropia Shannona', kde=True, bins=10)
-    plt.title('Rozkład entropii Shannona')
+    sns.histplot(data=df, x='Entropia Shannona', hue='Kierunek', kde=True, bins=10, palette='Set2',multiple='dodge')
+    plt.title('Rozkład entropii Shannona z podziałem na kierunek')
     plt.xlabel('Entropia Shannona')
+    plt.ylabel('Liczba przypadków')
     plt.tight_layout()
-    plt.savefig(os.path.join(folder, 'entropia_histogram.png'))
+    plt.savefig(os.path.join(folder, 'entropia_histogram_kierunek.png'))
     plt.close()
 
     # etropia i plec
     plt.figure(figsize=(8, 5))
-    sns.boxplot(data=df, x='Płeć', y='Entropia Shannona')
+    sns.boxplot(data=df, x='Płeć', y='Entropia Shannona', hue='Płeć', palette='Set1')
     plt.title('Entropia Shannona wg płci')
     plt.tight_layout()
     plt.savefig(os.path.join(folder, 'entropia_plec.png'))
     plt.close()
+
+    plt.figure(figsize=(8, 5))
+    sns.boxplot(data=df, x='Płeć', y='Entropia Shannona', hue='Płeć', palette='Set1')
+    plt.title('Entropia Shannona wg płci')
+    plt.tight_layout()
+    plt.savefig(os.path.join(folder, 'entropia_plec.png'))
+    plt.close()
+
 
 
 if __name__ == "__main__":
