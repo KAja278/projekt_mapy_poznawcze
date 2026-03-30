@@ -25,3 +25,8 @@ python main.py
 ## Opis działania
 
 Mapy poznawcze są reprezentowane jako grafy, w których wierzchołki odpowiadają pojęciom, a krawędzie relacjom między nimi. Na tej podstawie obliczana jest entropia Shannona, będąca miarą ilości informacji strukturalnej w grafie.
+
+## Autorzy 
+@julkap47
+@sczepanikjulia
+@KAja278 
